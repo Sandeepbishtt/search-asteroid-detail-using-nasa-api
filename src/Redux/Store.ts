@@ -1,8 +1,8 @@
-import { configureStore } from "@reduxjs/toolkit";
-import SliceReducer from "./SliceReducer";
+import {configureStore} from '@reduxjs/toolkit'
+import AsteroidSlice from "./Reducer"
 
 export default configureStore({
-  reducer: {
-    data: SliceReducer,
-  },
-});
+	reducer :{
+		data: AsteroidSlice.reducer
+	}
+})

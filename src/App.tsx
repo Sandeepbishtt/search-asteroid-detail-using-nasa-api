@@ -1,17 +1,17 @@
-import React from "react";
-import AsteroidDetail from "./Components/AsteroidDetail";
-import InputForm from "./Components/SearchAsteroid";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
-
-const App = () => {
+import React from 'react';import logo from './logo.svg';
+import {BrowserRouter,Switch,Route} from 'react-router-dom'
+import SearchAsteroid from './Components/SearchAsteroid'
+import AsteroidDetail from './Components/AsteroidDetail'
+function App() {
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/" component={InputForm} />
-        <Route exact path="/AsteroidDetail" component={AsteroidDetail} />
-      </Switch>
-    </Router>
+   <BrowserRouter>
+   <h2 style={{textAlign:'center'}}> Nasa Asteroid Detail App </h2>
+    <Switch>
+    <Route exact path='/' component={SearchAsteroid} />
+    <Route exact path='/AsteroidDetail' component ={AsteroidDetail} />
+    </Switch>
+
+    </BrowserRouter> 
   );
 }
 

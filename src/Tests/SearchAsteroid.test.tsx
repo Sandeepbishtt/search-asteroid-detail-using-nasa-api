@@ -1,22 +1,10 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import App from './App';
+import SearchAsteroid from '../Components/SearchAsteroid';
 import{Provider} from 'react-redux'
-import store from './Redux/Store'
+import store from '../Redux/Store'
 import {BrowserRouter} from 'react-router-dom'
 import ReactDOM from 'react-dom'
-test('renders learn react link', () => {
-  render(
-<BrowserRouter>
-     <Provider store= {store}>
-    <App />
-    </Provider>
-</BrowserRouter>
-
-    );
-  const linkElement = screen.getByText(/Nasa Asteroid Detail App/i);
-  expect(linkElement).toBeInTheDocument();
-});
 
 describe('check snapshot' ,() =>{
   let container:HTMLDivElement
@@ -27,7 +15,7 @@ describe('check snapshot' ,() =>{
     ReactDOM.render(
       <BrowserRouter>
      <Provider store= {store}>
-    <App />
+    <SearchAsteroid />
     </Provider>
 </BrowserRouter>,container)
   })
@@ -40,3 +28,17 @@ describe('check snapshot' ,() =>{
     expect(container).toMatchSnapshot()
   })
 })
+test('render async calling api',async()=>{
+    render(
+      <BrowserRouter>
+      <Provider store={store}>
+          <SearchAsteroid />
+        </Provider>
+      </BrowserRouter>
+          )
+          const element = await screen.getAllByRole('progressbar')
+          expect(element).toHaveLength(1)
+  })
+
+ 
+  
